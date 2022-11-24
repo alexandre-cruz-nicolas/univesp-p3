@@ -17,13 +17,13 @@ const AddPet = () => {
     const [selectedSexo, setSelectedSexo ] = useState('M')
     const [selectedTipo, setSelectedTipo ] = useState('F')
     const [selectedCity , setSelectedCity] = useState('0');
-
+    const [selectedFile, setSelectedFile ] = useState();
     const [ formData, setFormData ] = useState({
-        name: '',
-        email: '',
+        nome: '',
+        descricao: '',
+        doador: '',
         whatsapp: ''
     })
-    const [selectedFile, setSelectedFile ] = useState();
 
     const history = useNavigate();
 
@@ -77,38 +77,20 @@ const AddPet = () => {
 
     async function handleSubmit(event){
         event.preventDefault(); //evitar que o form recarregue a tela
-
-        const {name, email, whatsapp} = formData;
+        
+        const {nome, descricao, doador, whatsapp} = formData;
         const uf = selectedUF;
-        const city = selectedCity;
+        const cidade = selectedCity;
+        const sexo = selectedSexo;
+        const tipo = selectedTipo;
 
-
-        const data = new FormData();
-        data.append('name', name);
-        data.append('email', email);
-        data.append('whatsapp', whatsapp);
-        data.append('uf', uf);
-        data.append('city', city);
-        if (selectedFile) {
-           data.append('image', selectedFile);
-        }
-
-
-        /*const data = {
-            name,
-            email,
-            whatsapp,
-            uf,
-            city,
-            latitude,
-            longitude,
-            itens
-        }*/
+        console.log('formData.nome' + formData.nome);
+        const data = {nome, sexo, tipo, descricao, doador, whatsapp, uf, cidade };
 
         //console.log( selectedFile  );
-        //console.log( name );
+        //console.log( 'sexo: ' + sexo );
        
-        await api.post('points', data);
+        await api.post('pets', data);
 
         alert('Pet adicionado!');
 
@@ -132,36 +114,37 @@ const AddPet = () => {
                         <h2>Dados do pet</h2>
                     </legend>
                     <div className="field">
-                        <label htmlFor="name">Nome do Pet</label>
+                        <label htmlFor="nome">Nome do Pet</label>
                         <input
                             type="text"
-                            name="name"
-                            id="name" 
+                            name="nome"
+                            id="nome" 
                             onChange={handleInputChange}
                         />
                     </div>
                     <div className="field-group">
                         <div className="field">
-                            <label htmlFor="name">Sexo</label>
-                             <select name="sexo" id="sexo" value={selectedSexo} onChange={handleSelectSexo}>
+                            <label htmlFor="sexo">Sexo</label>
+                             <select name="sexo" id="sexo" value="0" onChange={handleSelectSexo}>
                                 <option key="M" value='M'>Macho</option>
                                 <option key="F" value='F'>Fêmea</option>
                              </select>
                         </div>
                         <div className="field">
-                            <label htmlFor="name">Tipo</label>
+                            <label htmlFor="tipo">Tipo</label>
                              <select name="tipo" id="tipo" value={selectedTipo} onChange={handleSelectTipo}>
-                                <option key="F" value='F'>Filhote</option>
-                                <option key="A" value='A'>Adulto</option>
+                                <option key="F" value="F">Filhote</option>
+                                <option key="A" value="A">Adulto</option>
                              </select>
                         </div>
                         
                     </div>
                     <div className="field">
-                        <label htmlFor="name">Descreva as características do pet: Raça, cor, idade, porte, temperamento, etc...</label>
+                        <label htmlFor="descricao">Descreva as características do pet: raça, cor, idade, porte, temperamento, etc...</label>
                         <textarea
                             name="descricao"
-                            id="descricao" 
+                            id="descricao"
+                            onChange={handleInputChange} 
                         />
                     </div>
                 </fieldset>
@@ -172,7 +155,7 @@ const AddPet = () => {
                     </legend>
 
                     <div className="field">
-                        <label htmlFor="name">Nome do Doador</label>
+                        <label htmlFor="doador">Nome do Doador</label>
                         <input
                             type="text"
                             name="doador"
@@ -214,7 +197,7 @@ const AddPet = () => {
                     </div>
 
                     <div className="field">
-                        <label htmlFor="name">WhatsApp (DDD)99999-9999</label>
+                        <label htmlFor="whatsapp">WhatsApp (99)99999-9999</label>
                         <input
                             type="text"
                             name="whatsapp"
