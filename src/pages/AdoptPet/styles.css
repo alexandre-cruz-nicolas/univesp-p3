@@ -1,13 +1,11 @@
 #page-add-pet {
   width: 100%;
   max-width: 1100px;
-
   margin: 0 auto;
 }
 
 #page-add-pet header {
   margin-top: 48px;
-
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -17,7 +15,6 @@
   color: var(--title-color);
   font-weight: bold;
   text-decoration: none;
-
   display: flex;
   align-items: center;
 }
@@ -33,7 +30,6 @@
   max-width: 800px;
   background: #FFF;
   border-radius: 8px;
-
   display: flex;
   flex-direction: column;
 }
@@ -71,9 +67,23 @@
   display: flex;
 }
 
+#page-add-pet form .lista-pets {
+  flex: 1;
+  border-radius: 8px;
+  border: 0;
+  font-size: 16px;
+}
+
+#page-add-pet form .pet {
+  background: #F0F0F5;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 24px;
+  width: 100%;
+}
+
 #page-add-pet form .field {
   flex: 1;
-
   display: flex;
   flex-direction: column;
   margin-bottom: 24px;
@@ -213,4 +223,47 @@
 .items-grid li.selected {
   background: #E1FAEC;
   border: 2px solid #2FBFFF;
+}
+
+#page-add-pet  a {
+  width: 100%;
+  max-width: 180px;
+  height: 48px;
+  background: var(--primary-color);
+  border-radius: 8px;
+  text-decoration: none;
+
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+
+  margin-top: 8px;
+}
+
+#page-add-pet  a span {
+  display: block;
+  background: rgba(0, 0, 0, 0.08);
+  width: 48px;
+  height: 48px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s;
+}
+
+#page-add-pet  a span svg {
+  color: #FFF;
+  width: 20px;
+  height: 20px;
+}
+
+#page-add-pet  a strong {
+  flex: 1;
+  text-align: center;
+  color: #FFF;
+}
+
+#page-add-pet a:hover {
+  background: #2FBFFF;
 }

@@ -22,7 +22,7 @@ const Home = () => {
                   </span>
                   <strong>Cadastrar pet</strong>
               </Link>
-              <Link to="/">
+              <Link to="/adopt-pet">
                   <span>
                       <MdPets />
                   </span>
