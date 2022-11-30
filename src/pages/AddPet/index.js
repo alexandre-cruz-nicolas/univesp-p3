@@ -125,7 +125,7 @@ const AddPet = () => {
                     <div className="field-group">
                         <div className="field">
                             <label htmlFor="sexo">Sexo</label>
-                             <select name="sexo" id="sexo" value="0" onChange={handleSelectSexo}>
+                             <select name="sexo" id="sexo" value={selectedSexo} onChange={handleSelectSexo}>
                                 <option key="M" value='M'>Macho</option>
                                 <option key="F" value='F'>Fêmea</option>
                              </select>
