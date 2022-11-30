@@ -87,7 +87,7 @@ const AddPet = () => {
         console.log('formData.nome' + formData.nome);
         const data = {nome, sexo, tipo, descricao, doador, whatsapp, uf, cidade };
 
-        //console.log( selectedFile  );
+        console.log( selectedFile  );
         //console.log( 'sexo: ' + sexo );
        
         await api.post('pets', data);
